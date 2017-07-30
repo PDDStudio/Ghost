@@ -60,10 +60,12 @@ themeMiddleware.updateTemplateData = function updateTemplateData(req, res, next)
             amp: settingsCache.get('amp')
         },
         labsData = _.cloneDeep(settingsCache.get('labs')),
-        themeData = {};
+        themeData = {},
+        propsData = {};
 
     if (activeTheme.get()) {
         themeData.posts_per_page = activeTheme.get().config('posts_per_page');
+        propsData = activeTheme.get().config('properties');
     }
 
     // Request-specific information
@@ -80,7 +82,8 @@ themeMiddleware.updateTemplateData = function updateTemplateData(req, res, next)
         data: {
             blog: blogData,
             labs: labsData,
-            config: themeData
+            config: themeData,
+            properties: propsData
         }
     });
 
