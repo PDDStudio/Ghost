@@ -1,6 +1,6 @@
 var _ = require('lodash'),
     defaultConfig = require('./defaults'),
-    allowedKeys = ['posts_per_page'];
+    allowedKeys = ['posts_per_page', 'properties'];
 
 module.exports.create = function configLoader(packageJson) {
     var config = _.cloneDeep(defaultConfig);
